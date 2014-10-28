@@ -1,0 +1,40 @@
+xilinx-zynq-a9 cortex-a9
+
+
+qemu-system-arm -M versatilepb -m 128M -nographic -cpu arm1176  -kernel xinu.boot -S -gdb tcp::5556 xinu.elf 
+
+qemu-system-arm -M xilinx-zynq-a9 -m 128M -nographic -cpu cortex-a9  -kernel xinu.boot -S -gdb tcp::5556 xinu.elf 
+
+
+gdb
+=======
+arm-none-eabi-gdb xinu.elf 
+
+target remote localhost:5556
+b *0x100b4  ; line 100 start.S
+x/5i $pc
+si
+
+(gdb) info breakpoints
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x000100b4 ../loader/platforms/arm-qemu/start.S:100
+	breakpoint already hit 2 times
+2       breakpoint     keep y   0x000100d0 ../loader/platforms/arm-qemu/start.S:111
+	breakpoint already hit 2 times
+4       breakpoint     keep y   0x00010510 in nulluser at ../system/initialize.c:77
+	breakpoint already hit 2 times
+5       breakpoint     keep y   0x00010538 in nulluser at ../system/initialize.c:83
+	breakpoint already hit 2 times
+6       breakpoint     keep y   0x00010538 in nulluser at ../system/initialize.c:83
+	breakpoint already hit 1 time
+7       breakpoint     keep y   0x00010538 in nulluser at ../system/initialize.c:85
+	breakpoint already hit 1 time
+
+ b /Users/usw/Install/Paralella/exinu/exinu/system/initialize.c:77
+
+ b /Users/usw/Install/Paralella/exinu/exinu/system/clkhandler.c:30
+
+
+ddd
+======
+ddd --debugger arm-none-eabi-gdb ~/Install/Paralella/exinu/exinu/compile/xinu.elf 
