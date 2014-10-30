@@ -71,6 +71,7 @@ void dispatch(void)
     uint32_t irq = mp_giccpu_ptr->Ack & 0x3FF;
 //    mp_giccpu_ptr->Ack = irq + 32;
     interruptVector[irq]();
+    mp_giccpu_ptr->EOInt = irq ;
 }
 
 /**

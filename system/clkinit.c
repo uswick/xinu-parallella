@@ -67,7 +67,8 @@ void clkinit(void)
     /* register clock interrupt */
     interruptVector[IRQ_TIMER] = clkhandler;
     enable_irq(IRQ_TIMER);
-    clkupdate(platform.clkfreq / 1000);
+//    clkupdate(platform.clkfreq / 1000);
+    clkupdate(1000);
 #endif
 }
 

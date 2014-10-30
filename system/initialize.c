@@ -430,7 +430,7 @@ void nulluser(void)
 #ifndef DEBUG
         pause();
 #endif                          /* DEBUG */
-        kprintf("null process \n");
+//        kprintf("null process \n");
     }
 }
 

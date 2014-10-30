@@ -16,7 +16,7 @@
 
 #include <clock.h>
 #include <stdint.h>
-
+#import "interrupt.h"
 
 typedef volatile struct{
     uint32_t Load;        /* +0x00 */
@@ -39,21 +39,39 @@ void MPCore_timer0_update(ulong cycles){
     timer0->IntStatus = 1;
 //    timer0->Load = 25556 ;
     timer0->Load = cycles ;
-    mp_timer_value = timer0->Counter;
+//    mp_timer_value = timer0->Counter;
     //disable auto reload --> single shot
-    timer0->Control &= ~(MPCore_Timer_AutoReload);
+//    timer0->Control &= ~(MPCore_Timer_AutoReload);
     //enable IRQ
-    timer0->Control |= MPCore_Timer_IRQEnable ;
+//    timer0->Control |= MPCore_Timer_IRQEnable ;
 
 //    enable();
     //enable timer
-    timer0->Control |= MPCore_Timer_Enable;
-    mp_timer_value = timer0->Counter;
+//    timer0->Control |= MPCore_Timer_Enable;
+//    mp_timer_value = timer0->Counter;
 //    enable();
 }
 
 void MPCore_timer0_init(){
     //init a second timer for timing/delays
+    timer0->Load = 0 ;
+    timer0->Counter = 0 ;
+    timer0->IntStatus = 1;
+
+    uint32_t prescale = 0xFF;
+//    timer0->Load = cycles ;
+//    mp_timer_value = timer0->Counter;
+    //disable auto reload --> single shot
+//    timer0->Control &= ~(MPCore_Timer_AutoReload);
+//    timer0->Control = (prescale << 8) | MPCore_Timer_AutoReload | MPCore_Timer_IRQEnable ;
+    timer0->Control = (prescale << 8) | MPCore_Timer_IRQEnable ;
+    //enable IRQ
+    enable_irq(IRQ_TIMER);
+//    timer0->Control |= MPCore_Timer_IRQEnable ;
+
+    //enable timer
+    timer0->Load = 100 ;
+    timer0->Control |= MPCore_Timer_Enable;
 }
 
 

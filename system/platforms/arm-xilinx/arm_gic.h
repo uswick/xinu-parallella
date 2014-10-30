@@ -53,6 +53,7 @@ typedef volatile struct {
     uint32_t PriorityMask;            //ICCPMR 0x04
     uint32_t BinaryPoint ;            //ICCBPR 0x08
     uint32_t Ack         ;            //ICCIAR 0x0C
+    uint32_t EOInt         ;          //ICCIAR 0x10
 }MPCore_GIC_Cpui;
 
 #endif
