@@ -29,7 +29,7 @@ const device devtab[NDEVS] =
 	  (void *)uartInit, (void *)ionull, (void *)ionull,
 	  (void *)uartRead, (void *)uartWrite, (void *)ioerr,
 	  (void *)uartGetc, (void *)uartPutc, (void *)uartControl,
-	  (void *)0xe0000000, (void *)uartInterrupt, 27 },
+	  (void *)0xe0001000, (void *)uartInterrupt, 27 },
 
 /* DEVNULL is null */
 	{ 1, 0, "DEVNULL",

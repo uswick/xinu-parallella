@@ -1,5 +1,5 @@
 # Name of this component (the directory this file is stored in)
-COMP = loader/platforms/arm-qemu
+COMP = loader/platforms/arm-xilinx
 
 # Source files for this component
 C_FILES =

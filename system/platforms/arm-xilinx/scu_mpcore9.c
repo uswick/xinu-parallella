@@ -39,6 +39,7 @@ void MPCore_timer0_update(ulong cycles){
     timer0->IntStatus = 1;
 //    timer0->Load = 25556 ;
     timer0->Load = cycles ;
+//    kprintf("timer \r\n");
 //    mp_timer_value = timer0->Counter;
     //disable auto reload --> single shot
 //    timer0->Control &= ~(MPCore_Timer_AutoReload);
@@ -70,7 +71,7 @@ void MPCore_timer0_init(){
 //    timer0->Control |= MPCore_Timer_IRQEnable ;
 
     //enable timer
-    timer0->Load = 100 ;
+    timer0->Load = 1000 ;
     timer0->Control |= MPCore_Timer_Enable;
 }
 

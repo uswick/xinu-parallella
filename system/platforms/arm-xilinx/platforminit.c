@@ -117,11 +117,14 @@ int platforminit(void)
 {
     strlcpy(platform.family, "ARM Cortex-a9", PLT_STRMAX);
     strlcpy(platform.name, "ARM QEMU PARALLELLA", PLT_STRMAX);
-    platform.maxaddr = (void *)0xBFFFFFF; /* Used only if atags are bad */
+//    platform.maxaddr = (void *)0xBFFFFFF; /* Used only if atags are bad */
+    platform.maxaddr = (void *)0x8000000; /* Used only if atags are bad */
+    platform.minaddr = (void *)0x0000000; /* Used only if atags are bad */
     platform.clkfreq = 1000000;
+//    platform.clkfreq = 100000000;
     platform.serial_low = 0;   /* Used only if serial # not found in atags */
     platform.serial_high = 0;  /* Used only if serial # not found in atags */
-    parse_atag_list();
+//    parse_atag_list();
     init_GIC();
     MPCore_timer0_init();
     return OK;

@@ -9,7 +9,8 @@
 #include "xilinx_ut.h"
 
 //base address for mmapped uart
-cadance_UT * const CAD_UART0 = (cadance_UT *)0xE0000000;
+//cadance_UT * const CAD_UART0 = (cadance_UT *)0xE0000000;
+cadance_UT * const CAD_UART0 = (cadance_UT *)0xE0001000;
 
 //UART_RST_CTRL_reg
 sclr_UT_rst_ctrl * const UT_rst_ctrl = (sclr_UT_rst_ctrl *)0xF8000228;
@@ -30,8 +31,8 @@ void cadance_uart_init(cadance_UT *uart) {
 
 //[ 2.MIO pins ]
 // Configure MIO pin 46 for the RxD signal. and pin 47 for the TxD signal.
-    pinRX->MIO_PIN_46_reg = 0x000012E1;
-    pinTX->MIO_PIN_47_reg = 0x000012E0;
+//    pinRX->MIO_PIN_46_reg = 0x000012E1;
+//    pinTX->MIO_PIN_47_reg = 0x000012E0;
 
 // [3. configure ref clock for UART ]
 // Disable UART 1 Reference clock , set divisor = 14
@@ -82,7 +83,8 @@ devcall uartHwInit(device *devptr)
 {
     volatile cadance_UT *regptr = devptr->csr;
 
-    cadance_uart_init(regptr);
+    //Remove init - does not work on paralella without it
+//    cadance_uart_init(regptr);
     /* TODO:  It doesn't work without this delay, but why? */
 //    udelay(1500);
 

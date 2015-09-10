@@ -1,3 +1,10 @@
+compile
+=======
+make PLATFORM=arm-xilinx COMPILER_ROOT=/opt/local/bin//arm-none-eabi-
+
+run
+======
+
 xilinx-zynq-a9 cortex-a9
 
 
@@ -38,3 +45,21 @@ Num     Type           Disp Enb Address    What
 ddd
 ======
 ddd --debugger arm-none-eabi-gdb ~/Install/Paralella/exinu/exinu/compile/xinu.elf 
+
+create image uboot
+=================
+./mkimage -A arm -O linux -T kernel -C none -a 0x10000 -e 0x10000 -n 'xinuImage' -d /Users/usw/Install/Paralella/xinu-udayanga/compile/xinu.boot /Users/usw/Install/Paralella/xinu-udayanga/compile/xinu.uImage
+
+
+./mkimage -A arm -O linux -T kernel -C none -a 0x10000 -e 0x10000 -n 'xinuImage' -d /Users/udayanga/Install/Paralella/xinu-udayanga/compile/xinu.boot /Users/udayanga/Install/Paralella/xinu-udayanga/compile/kernel.uImage
+
+
+/Users/usw/Install/Paralella/xinu-udayanga/compile
+
+run using uboot
+===============
+
+mmcinfo
+fatload mmc 0 0x10000 xinu.boot
+go 0x10000
+

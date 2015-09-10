@@ -370,6 +370,10 @@ uart->Rcvr_timeout_reg0 = 10;
 * END OF UART TEST CODE
 */
 
+int t_order = 0 ;
+void print_dump(){
+    kprintf("test print %d \r\n", t_order++);
+}
 
 
 /**
@@ -382,11 +386,15 @@ uart->Rcvr_timeout_reg0 = 10;
  * for a semaphore, or put to sleep, or exit.  In particular, it must not 
  * do I/O unless it uses kprintf for synchronous output.
  */
+//#include "../device/uart-xilinx/xilinx_ut.h"
+//extern cadance_UT * const ut_reg = (cadance_UT *)0xE0001000;;
+
 void nulluser(void)
 {
 //    init_GIC();
 //    MPCore_timer0_init();
 
+    //kprintf("start\r\n");
     /*
     cadance_uart_init(CAD_UART0);
     cadance_uart_putc(CAD_UART0, 'a');
@@ -414,15 +422,19 @@ void nulluser(void)
     /* Platform-specific initialization  */
     platforminit();
 
+    //kprintf("p1 \r\n");
     /* General initialization  */
     sysinit();
 
+    //kprintf("p2 \r\n");
     /* Enable interrupts  */
     enable();
 
+    //kprintf("p3 \r\n");
     /* Spawn the main thread  */
     ready(create(main, INITSTK, INITPRIO, "MAIN", 0), RESCHED_YES);
 
+    //kprintf("p4 \n");
 //    kprintf("init done \n");
     /* null thread has nothing else to do but cannot exit  */
     while (TRUE)

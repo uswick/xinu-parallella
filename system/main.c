@@ -24,7 +24,7 @@ thread main(void)
     int shelldevs[4][3];
     uint nshells = 0;
 #endif
-
+//    kprintf("in main \r\n");
     /* Print information about the operating system  */
     print_os_info();
 
@@ -149,36 +149,35 @@ static void print_os_info(void)
     /* Output Xinu memory layout */
     kprintf("%10d bytes physical memory.\r\n",
             (ulong)platform.maxaddr - (ulong)platform.minaddr);
-#ifdef DETAIL
+//#ifdef DETAIL
     kprintf("           [0x%08X to 0x%08X]\r\n",
             (ulong)platform.minaddr, (ulong)(platform.maxaddr - 1));
-#endif
-
+//#endif
 
     kprintf("%10d bytes reserved system area.\r\n",
             (ulong)_start - (ulong)platform.minaddr);
-#ifdef DETAIL
+//#ifdef DETAIL
     kprintf("           [0x%08X to 0x%08X]\r\n",
             (ulong)platform.minaddr, (ulong)_start - 1);
-#endif
+//#endif
 
     kprintf("%10d bytes Xinu code.\r\n", (ulong)&_end - (ulong)_start);
-#ifdef DETAIL
+//#ifdef DETAIL
     kprintf("           [0x%08X to 0x%08X]\r\n",
             (ulong)_start, (ulong)&_end - 1);
-#endif
+//#endif
 
     kprintf("%10d bytes stack space.\r\n", (ulong)memheap - (ulong)&_end);
-#ifdef DETAIL
+//#ifdef DETAIL
     kprintf("           [0x%08X to 0x%08X]\r\n",
             (ulong)&_end, (ulong)memheap - 1);
-#endif
+//#endif
 
     kprintf("%10d bytes heap space.\r\n",
             (ulong)platform.maxaddr - (ulong)memheap);
-#ifdef DETAIL
+//#ifdef DETAIL
     kprintf("           [0x%08X to 0x%08X]\r\n\r\n",
             (ulong)memheap, (ulong)platform.maxaddr - 1);
-#endif
+//#endif
     kprintf("\r\n");
 }

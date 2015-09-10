@@ -41,11 +41,11 @@ interrupt clkhandler(void)
     /* If key reaches zero, call wakeup.              */
     if (nonempty(sleepq) && (--firstkey(sleepq) <= 0))
     {
-        wakeup();
+       wakeup();
     }
     else
     {
-        resched();
+       resched();
     }
 }
 
