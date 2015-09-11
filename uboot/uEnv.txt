@@ -1,0 +1,4 @@
+baudrate=115200
+bootcmd=run sdboot
+sdboot=echo Copying Xinu from SD to RAM...;mmcinfo;fatload mmc 0 0x10000 xinu.boot;go 0x10000
+uenvcmd=boot
