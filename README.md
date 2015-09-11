@@ -1,7 +1,7 @@
 # Embedded Xinu for Xilinx Zynq #
 This is the basic port of Xinu Operating System to Xilinx Zynq platform (more details in http://www.xilinx.com/products/silicon-devices/soc/zynq-7000.html).
 
-This version of Xinu port has been tested on Zed and Parallella platform baseboards.
+This version of Xinu port has been tested on Zed (http://zedboard.org/) and Parallella (https://www.parallella.org/) platform baseboards. Currently available drivers are limited to serial communication controller (and timers/interrupt controller drivers for premption). Future versions may include network/usb/hdmi drivers.
 
 
 # Embedded Xinu #
