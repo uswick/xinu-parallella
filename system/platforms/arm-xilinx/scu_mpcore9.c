@@ -40,17 +40,6 @@ void MPCore_timer0_update(ulong cycles){
 //    timer0->Load = 25556 ;
     timer0->Load = cycles ;
 //    kprintf("timer \r\n");
-//    mp_timer_value = timer0->Counter;
-    //disable auto reload --> single shot
-//    timer0->Control &= ~(MPCore_Timer_AutoReload);
-    //enable IRQ
-//    timer0->Control |= MPCore_Timer_IRQEnable ;
-
-//    enable();
-    //enable timer
-//    timer0->Control |= MPCore_Timer_Enable;
-//    mp_timer_value = timer0->Counter;
-//    enable();
 }
 
 void MPCore_timer0_init(){
@@ -74,13 +63,6 @@ void MPCore_timer0_init(){
     timer0->Load = 1000 ;
     timer0->Control |= MPCore_Timer_Enable;
 }
-
-
-//void sp804_init(void)
-//{
-//    /* Enable the second timer (free-running, no IRQ)  */
-//    regs->timers[1].Control = SP804_TIMER_ENABLE | SP804_TIMER_32BIT;
-//}
 
 /* clkcount() interface is documented in clock.h  */
 ulong clkcount(void)

@@ -1,6 +1,6 @@
 /**
- * @file uartHwInit.c
- */
+* @file uartHwInit.c
+*/
 /* Embedded Xinu, Copyright (C) 2009, 2013.  All rights reserved. */
 
 #include <uart.h>
@@ -10,16 +10,16 @@
 
 //base address for mmapped uart
 //cadance_UT * const CAD_UART0 = (cadance_UT *)0xE0000000;
-cadance_UT * const CAD_UART0 = (cadance_UT *)0xE0001000;
+cadance_UT *const CAD_UART0 = (cadance_UT *) 0xE0001000;
 
 //UART_RST_CTRL_reg
-sclr_UT_rst_ctrl * const UT_rst_ctrl = (sclr_UT_rst_ctrl *)0xF8000228;
+sclr_UT_rst_ctrl *const UT_rst_ctrl = (sclr_UT_rst_ctrl *) 0xF8000228;
 
 //UART clck/ref control
-sclr_UT_clk_ctrl * const UT_clk_ctrl = (sclr_UT_clk_ctrl *)0xF8000154;
+sclr_UT_clk_ctrl *const UT_clk_ctrl = (sclr_UT_clk_ctrl *) 0xF8000154;
 
-mio_PIN_RX_t * const pinRX = (mio_PIN_RX_t *) 0xF80007B8 ;
-mio_PIN_TX_t * const pinTX = (mio_PIN_TX_t *) 0x000007BC ;
+mio_PIN_RX_t *const pinRX = (mio_PIN_RX_t *) 0xF80007B8;
+mio_PIN_TX_t *const pinTX = (mio_PIN_TX_t *) 0x000007BC;
 
 int CAD_uart_char_count = 0;
 
@@ -79,12 +79,11 @@ void cadance_uart_init(cadance_UT *uart) {
 
 }
 
-devcall uartHwInit(device *devptr)
-{
+devcall uartHwInit(device *devptr) {
     volatile cadance_UT *regptr = devptr->csr;
 
     //Remove init - does not work on paralella without it
-//    cadance_uart_init(regptr);
+    cadance_uart_init(regptr);
     /* TODO:  It doesn't work without this delay, but why? */
 //    udelay(1500);
 

@@ -124,6 +124,8 @@ int platforminit(void)
 //    platform.clkfreq = 100000000;
     platform.serial_low = 0;   /* Used only if serial # not found in atags */
     platform.serial_high = 0;  /* Used only if serial # not found in atags */
+
+    //todo use atag-list for initialization ?
 //    parse_atag_list();
     init_GIC();
     MPCore_timer0_init();

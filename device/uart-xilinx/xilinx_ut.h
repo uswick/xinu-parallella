@@ -3,6 +3,10 @@
  */
 
 /* Embedded Xinu, Copyright (C) 2009, 2013.  All rights reserved. */
+
+/*
+* Xinlinx Zynq UART device definition and mmaped registers
+* */
 #include <stdint.h>
 
 #ifndef _XILINX_UT_H_

@@ -11,7 +11,8 @@
 /**
  * @ingroup uarthardware
  *
- * Handle an interrupt request from a PL011 UART.
+ * todo
+ * Handle an interrupt request from a Xilinx PS UART .
  */
 interrupt uartInterrupt(void)
 {
